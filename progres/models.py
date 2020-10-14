@@ -19,7 +19,6 @@ class Balai(models.Model):
 
 
 class Satker(models.Model):
-    id = models.AutoField(primary_key=False)
     kdsatker = models.CharField(max_length=8, unique=True, primary_key=True)
     nmsatker = models.CharField(max_length=200)
     phone = models.CharField(max_length=12, null=True)
@@ -92,7 +91,6 @@ class Sycmyc(models.Model):
 
 
 class Kodeoutput(models.Model):
-    id = models.AutoField(primary_key=False)
     kdoutput = models.CharField(max_length=3, unique=True, primary_key=True)
     nmkdoutput = models.CharField(max_length=250)
 
@@ -138,36 +136,48 @@ class Paket(models.Model):
 
 
 class Pagu(models.Model):
-    pagurmp = models.DecimalField(null=True)
-    phln = models.DecimalField(null=True)
-    sbsn = models.DecimalField(null=True)
+    pagurmp = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    phln = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    sbsn = models.DecimalField(max_digits=15, decimal_places=2, null=True)
     paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
 
 
 class Progres(models.Model):
-    keuangan = models.DecimalField(null=True)
-    fisik = models.DecimalField(null=True)
+    keuangan = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    fisik = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
 
 
 class Note(models.Model):
-    nmnote = models.CharField(null=True)
-    lampirannote = models.CharField(null=True)
+    nmnote = models.CharField(max_length=250, null=True)
+    lampirannote = models.CharField(max_length=250, null=True)
     paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        return self.nmnote
 
 
 class Lampiran(models.Model):
-    nmlampiran = models.CharField(null=True)
-    lampiran = models.CharField(null=True)
+    nmlampiran = models.CharField(max_length=250, null=True)
+    lampiran = models.CharField(max_length=250, null=True)
     paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        return self.nmlampiran
 
 
 class Foto(models.Model):
-    nmnote = models.CharField(null=True)
-    foto = models.CharField(null=True)
+    nmfoto = models.CharField(max_length=250, null=True)
+    foto = models.CharField(max_length=250, null=True)
     paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        return self.nmfoto
 
 
 class Sistem(models.Model):
-    nmsistem = models.CharField(null=True)
+    nmsistem = models.CharField(max_length=250, null=True)
     paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        return self.nmsistem
