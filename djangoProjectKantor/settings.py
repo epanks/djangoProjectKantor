@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'progres.apps.ProgresConfig',
     'todo.apps.TodoConfig',
     'import_export',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'djangoProjectKantor.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dbkantor',
+        'NAME': 'mydata',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',

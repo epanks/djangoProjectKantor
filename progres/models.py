@@ -136,10 +136,11 @@ class Paket(models.Model):
 
 
 class Pagu(models.Model):
+    paket = models.OneToOneField(Paket, on_delete=models.DO_NOTHING, primary_key=True)
     pagurmp = models.DecimalField(max_digits=15, decimal_places=2, null=True)
     phln = models.DecimalField(max_digits=15, decimal_places=2, null=True)
     sbsn = models.DecimalField(max_digits=15, decimal_places=2, null=True)
-    paket = models.ForeignKey(Paket, on_delete=models.DO_NOTHING, null=True)
+
 
 
 class Progres(models.Model):
