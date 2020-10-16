@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'todo.apps.TodoConfig',
     'import_export',
     'rest_framework',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     'static',
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

@@ -11,4 +11,4 @@ class SatkerCreateForm(forms.ModelForm):
 class PaketCreateForm(forms.ModelForm):
     class Meta:
         model = Paket
-        fields = ['nmpaket', 'balai', 'wilayah']
+        fields = ['nmpaket', 'trgoutput', 'satoutput', 'trgoutcome', 'satoutcome', 'fnf','balai', 'kdoutput', 'ks', 'ppk', 'satker', 'sycmyc', 'ta', 'tag','wilayah']

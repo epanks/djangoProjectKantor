@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import PaketCreateForm
@@ -40,10 +40,10 @@ def list_balai(request):
 #     return Response(serializer.data)
 
 def list_paket(request):
-    title = 'Daftar Paket'
+    header = 'Daftar Paket'
     queryset = Paket.objects.all()
     context = {
-        "title": title,
+        "header": header,
         "queryset": queryset,
     }
     return render(request, "progres/list_paket.html", context)
@@ -53,8 +53,9 @@ def add_paket(request):
     form = PaketCreateForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return redirect('progres/list_paket')
     context = {
         "form": form,
-        "title": "Add Item",
+        "title": "Add Paket",
     }
-    return render(request, "add_items.html", context)
+    return render(request, "progres/add_paket.html", context)
